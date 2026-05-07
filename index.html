@@ -1028,7 +1028,7 @@
           <div class="score-card">
             <p class="score-card-label">Fraud probability</p>
             <p class="score-card-value" id="r-prob">—</p>
-            <p class="score-card-sub">Above 30% threshold</p>
+            <p class="score-card-sub" id="r-prob-sub">Below 30% threshold</p>
           </div>
           <div class="score-card">
             <p class="score-card-label">Risk tier</p>
@@ -1132,7 +1132,7 @@
 <script>
   // ── Config ──────────────────────────────────────────
   // Update this URL when you deploy to Render
-  const API_BASE = 'http://localhost:8000';
+  const API_BASE = 'https://fraud-detection-llm.onrender.com';
 
   // ── Tab switching ────────────────────────────────────
   function switchTab(idx) {
@@ -1214,6 +1214,8 @@
 
     const prob = (data.fraud_probability * 100).toFixed(1);
     document.getElementById('r-prob').textContent = `${prob}%`;
+    document.getElementById('r-prob-sub').textContent =
+    data.fraud_probability >= 0.30 ? 'Above 30% threshold' : 'Below 30% threshold';
 
     const tier = data.risk_tier;
     document.getElementById('r-tier').innerHTML =
