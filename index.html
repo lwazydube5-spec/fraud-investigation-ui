@@ -1225,7 +1225,7 @@
       `<span class="conf-badge">${data.confidence}</span>`;
 
     document.getElementById('result-meta').textContent =
-      `Generated in ${(data.total_ms / 1000).toFixed(1)}s · Random Forest + SHAP + Claude Haiku`;
+      `Generated in ${(data.total_ms / 1000).toFixed(1)}s`;
 
     // SHAP bars
     const maxImpact = Math.max(...data.top_reasons.map(r => r.impact));
